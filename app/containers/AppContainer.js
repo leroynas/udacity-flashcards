@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 
 import { loadDecks } from '../store/actions';
 import { makeSelectDecks } from '../store/selectors';
-import App from '../components/App';
+import App from '../components/views/App';
 
 function AppContainer(props) {
   const { decks, getDecks } = props;
@@ -15,7 +15,7 @@ function AppContainer(props) {
     if (decks === null) getDecks();
   }, []);
 
-  return <App {...props} />;
+  return <App />;
 }
 
 AppContainer.propTypes = {
