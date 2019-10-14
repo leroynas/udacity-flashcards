@@ -4,8 +4,8 @@ import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 
-import { loadDecks } from '../store/actions/decks';
-import { makeSelectDecks } from '../store/selectors/decks';
+import { loadDecks } from '../store/actions';
+import { makeSelectDecks } from '../store/selectors';
 import App from '../components/App';
 
 function AppContainer(props) {

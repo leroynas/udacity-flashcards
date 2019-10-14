@@ -14,4 +14,6 @@ function* loadDecks() {
   }
 }
 
-export default [takeLatest(LOAD_DECKS, loadDecks)];
+export default function* rootSaga() {
+  yield* [takeLatest(LOAD_DECKS, loadDecks)];
+}
