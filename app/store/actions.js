@@ -34,16 +34,17 @@ export function addDeck(deck) {
   };
 }
 
-export function deckAdded(deck) {
+export function deckAdded(id) {
   return {
     type: ADD_DECK_SUCCESS,
-    deck,
+    id,
   };
 }
 
-export function deckAddingError(message) {
+export function deckAddingError(message, id) {
   return {
     type: ADD_DECK_FAILED,
     message,
+    id,
   };
 }

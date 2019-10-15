@@ -1,9 +1,14 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 
-import { fetchDecks } from '../core/api';
+import { fetchDecks, storeDeck } from '../core/api';
 
-import { LOAD_DECKS } from './constants';
-import { decksLoaded, decksLoadingError } from './actions';
+import { LOAD_DECKS, ADD_DECK } from './constants';
+import {
+  decksLoaded,
+  decksLoadingError,
+  deckAdded,
+  deckAddingError,
+} from './actions';
 
 function* loadDecks() {
   try {
@@ -14,6 +19,15 @@ function* loadDecks() {
   }
 }
 
+function* addDeck({ deck }) {
+  try {
+    yield call(storeDeck, deck);
+    yield put(deckAdded(deck.id));
+  } catch ({ message }) {
+    yield put(deckAddingError(message, deck.id));
+  }
+}
+
 export default function* rootSaga() {
-  yield* [takeLatest(LOAD_DECKS, loadDecks)];
+  yield* [takeLatest(LOAD_DECKS, loadDecks), takeLatest(ADD_DECK, addDeck)];
 }
