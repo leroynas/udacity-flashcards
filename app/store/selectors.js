@@ -1,10 +1,11 @@
 import { createSelector } from 'reselect';
 
-const selectDecks = state => state.decks && state.decks.items;
+const selectDecks = state => state.decks && Object.values(state.decks);
 
 const makeSelectDecks = createSelector(
   selectDecks,
-  decks => decks && Object.values(decks),
+  decks =>
+    decks && decks.map(deck => ({ ...deck, cards: deck.questions.length })),
 );
 
 export { makeSelectDecks };

@@ -27,9 +27,10 @@ export function decksLoadingError(message) {
   };
 }
 
-export function addDeck() {
+export function addDeck(deck) {
   return {
     type: ADD_DECK,
+    deck,
   };
 }
 
