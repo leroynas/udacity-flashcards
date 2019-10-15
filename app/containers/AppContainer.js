@@ -13,7 +13,7 @@ import App from '../components/views/App';
 function AppContainer(props) {
   const { decks, getDecks } = props;
 
-  const [fontsLoaded, setFontsLoaded] = useState(false);
+  const [dependenciesLoaded, setDependenciesLoaded] = useState(false);
 
   useEffect(() => {
     if (decks === null) getDecks();
@@ -22,13 +22,13 @@ function AppContainer(props) {
   useEffect(() => {
     async function load() {
       await loadFonts();
-      setFontsLoaded(true);
+      setDependenciesLoaded(true);
     }
 
     load();
   }, []);
 
-  return fontsLoaded && <App />;
+  return dependenciesLoaded && <App />;
 }
 
 AppContainer.propTypes = {
