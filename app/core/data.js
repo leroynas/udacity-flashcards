@@ -12,6 +12,7 @@ export default {
         answer: 'The componentDidMount lifecycle event',
       },
     ],
+    createdAt: 1571143876552,
   },
   'e5f680f7-a50a-45ab-b0f4-06bfc416dfdb': {
     id: 'e5f680f7-a50a-45ab-b0f4-06bfc416dfdb',
@@ -23,5 +24,6 @@ export default {
           'The combination of a function and the lexical environment within which that function was declared.',
       },
     ],
+    createdAt: 1571143875552,
   },
 };

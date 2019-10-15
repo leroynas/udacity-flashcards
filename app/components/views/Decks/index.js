@@ -12,15 +12,10 @@ function Decks({ decks, navigation }) {
     <Container>
       <FlatList
         data={decks}
-        renderItem={({ item }) => <Deck deck={item} />}
+        renderItem={({ item }) => <Deck deck={item} navigation={navigation} />}
         keyExtractor={deck => deck.id}
-        ListFooterComponent={() => (
-          <Button
-            title="Add deck"
-            onPress={() => navigation.navigate('AddDeck')}
-          />
-        )}
       />
+      <Button title="Add deck" onPress={() => navigation.navigate('AddDeck')} />
     </Container>
   );
 }

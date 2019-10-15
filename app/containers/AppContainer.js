@@ -4,6 +4,7 @@ import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 
+import reset from '../core/reset';
 import { loadFonts } from '../core/fonts';
 
 import { loadDecks } from '../store/actions';
@@ -22,6 +23,7 @@ function AppContainer(props) {
   useEffect(() => {
     async function load() {
       await loadFonts();
+      await reset();
       setDependenciesLoaded(true);
     }
 

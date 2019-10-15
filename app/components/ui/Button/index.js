@@ -5,9 +5,9 @@ import Text from '../Text';
 
 import Touchable from './Touchable';
 
-function Button({ onPress, title }) {
+function Button({ title, ...rest }) {
   return (
-    <Touchable onPress={onPress}>
+    <Touchable {...rest}>
       <Text fontFamily="secondary" color="primary" size="medium" center>
         {title}
       </Text>

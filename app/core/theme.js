@@ -23,24 +23,36 @@ export default {
       background: '#ffffff',
       text: '#363636',
     },
-    status: {
-      green: {
-        background: '#6fcf97',
-        text: '#ffffff',
-      },
-      red: {
-        background: '#eb5757',
-        text: '#ffffff',
-      },
+    success: {
+      background: '#6fcf97',
+      text: '#ffffff',
+    },
+    danger: {
+      background: '#eb5757',
+      text: '#ffffff',
+    },
+    grey: {
+      shade1: '#e0e0e0',
+      shade2: '#9e9e9e',
+      shade3: '#616161',
     },
   },
   spacing: {
-    large: 30,
+    xlarge: 50,
+    large: 40,
     medium: 20,
-    small: 10,
+    small: 14,
+    xsmall: 10,
     none: 0,
   },
   shape: {
-    borderRadius: 14,
+    borderRadius: 18,
+    boxShadow: `
+      shadow-color: #000;
+      shadow-offset: 0 3px;
+      shadow-opacity: .2;
+      shadow-radius: 5px;
+      elevation: 1;
+    `,
   },
 };

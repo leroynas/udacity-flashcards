@@ -1,5 +1,6 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 
+import { navigate } from '../core/navigator';
 import { fetchDecks, storeDeck } from '../core/api';
 
 import { LOAD_DECKS, ADD_DECK } from './constants';
@@ -21,6 +22,7 @@ function* loadDecks() {
 
 function* addDeck({ deck }) {
   try {
+    yield navigate('Decks');
     yield call(storeDeck, deck);
     yield put(deckAdded(deck.id));
   } catch ({ message }) {

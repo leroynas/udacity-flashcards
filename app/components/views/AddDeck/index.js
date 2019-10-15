@@ -6,6 +6,7 @@ import generateId from 'uuid/v4';
 import Container from '../../ui/Container';
 import Header from '../../ui/Header';
 import IconButton from '../../ui/IconButton';
+import Flex from '../../ui/Flex';
 import Card from '../../ui/Card';
 import Input from '../../ui/Input';
 import Button from '../../ui/Button';
@@ -19,31 +20,26 @@ function AddDeck({ addDeck, navigation }) {
       id: generateId(),
       title,
       questions: [],
+      createdAt: new Date().getTime(),
     });
 
   return (
     <Container as={KeyboardAvoidingView} behavior="padding">
-      <Header>
-        <IconButton
-          onPress={() => navigation.goBack()}
-          icon="ios-arrow-round-back"
-          color="dark"
-        />
-      </Header>
+      <Flex fill justifyContent="space-between">
+        <Card fixedAspect justifyContent="center">
+          <Input
+            center
+            multiline
+            fontFamily="secondary"
+            size="large"
+            placeholder="Deck title"
+            value={title}
+            onChangeText={text => setTitle(text)}
+          />
+        </Card>
 
-      <Card>
-        <Input
-          center
-          multiline
-          fontFamily="secondary"
-          size="large"
-          placeholder="Deck title"
-          value={title}
-          onChangeText={text => setTitle(text)}
-        />
-      </Card>
-
-      <Button title="Save deck" onPress={handleAddDeck} />
+        <Button title="Save deck" spacing="large" onPress={handleAddDeck} />
+      </Flex>
     </Container>
   );
 }
