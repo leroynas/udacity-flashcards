@@ -38,6 +38,7 @@ export default {
     large: 30,
     medium: 20,
     small: 10,
+    none: 0,
   },
   shape: {
     borderRadius: 14,
