@@ -21,9 +21,7 @@ function Cards({ cards, children }) {
         </AbsoluteWrapper>
       )}
 
-      <Card fixedAspect justifyContent="center">
-        {children}
-      </Card>
+      {children}
     </Flex>
   );
 }

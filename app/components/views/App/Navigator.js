@@ -4,6 +4,7 @@ import { createStackNavigator } from 'react-navigation-stack';
 import DecksScreen from '../../../containers/DecksContainer';
 import AddDeckScreen from '../../../containers/AddDeckContainer';
 import DeckScreen from '../../../containers/DeckContainer';
+import AddCardScreen from '../../../containers/AddCardContainer';
 
 const navigationOptions = {
   header: null,
@@ -20,6 +21,10 @@ const Navigator = createStackNavigator({
   },
   Deck: {
     screen: DeckScreen,
+    navigationOptions,
+  },
+  AddCard: {
+    screen: AddCardScreen,
     navigationOptions,
   },
 });

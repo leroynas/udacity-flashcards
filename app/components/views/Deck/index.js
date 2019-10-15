@@ -5,10 +5,13 @@ import Container from '../../ui/Container';
 import Text from '../../ui/Text';
 import Flex from '../../ui/Flex';
 import Cards from '../../ui/Cards';
+import Card from '../../ui/Card';
 import Heading from '../../ui/Heading';
 import Button from '../../ui/Button';
 
 function Deck({ deck, navigation }) {
+  const cardCount = deck.cards.length;
+
   return (
     <Container>
       {deck === null ? (
@@ -17,16 +20,18 @@ function Deck({ deck, navigation }) {
         </Flex>
       ) : (
         <Flex fill justifyContent="space-between">
-          <Cards cards={deck.cards}>
-            <Heading>{deck.title}</Heading>
-            <Text>{`${deck.cards} ${deck.cards > 1 ? 'cards' : 'card'}`}</Text>
+          <Cards cards={cardCount}>
+            <Card fixedAspect justifyContent="center">
+              <Heading>{deck.title}</Heading>
+              <Text>{`${cardCount} ${cardCount > 1 ? 'cards' : 'card'}`}</Text>
+            </Card>
           </Cards>
 
           <Flex>
             <Button
               title="Add card"
               spacing="small"
-              onPress={() => navigation.navigate('AddDeck')}
+              onPress={() => navigation.navigate('AddCard', { id: deck.id })}
             />
             <Button
               title="Start quiz"

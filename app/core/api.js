@@ -13,9 +13,22 @@ export async function storeDeck(deck) {
   return storedDeck;
 }
 
-export async function deleteDeck({ key }) {
+export async function deleteDeck({ id }) {
   const data = AsyncStorage.getItem(DECKS_STORAGE_KEY);
   const decks = data ? JSON.parse(data) : {};
-  delete decks[key];
+  delete decks[id];
+  await AsyncStorage.setItem(DECKS_STORAGE_KEY, decks);
+}
+
+export async function storeCard(card, deckId) {
+  const storedCard = { [card.id]: card };
+  const storedDeck = { [deckId]: { cards: storedCard } };
+  await AsyncStorage.mergeItem(DECKS_STORAGE_KEY, JSON.stringify(storedDeck));
+}
+
+export async function deleteCard({ id, deckId }) {
+  const data = AsyncStorage.getItem(DECKS_STORAGE_KEY);
+  const decks = data ? JSON.parse(data) : {};
+  delete decks[deckId].cards[id];
   await AsyncStorage.setItem(DECKS_STORAGE_KEY, decks);
 }

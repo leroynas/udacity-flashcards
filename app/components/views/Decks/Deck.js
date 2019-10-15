@@ -7,13 +7,15 @@ import Heading from '../../ui/Heading';
 import Text from '../../ui/Text';
 
 function Deck({ deck, navigation }) {
+  const cardCount = deck.cards.length;
+
   const handleOnClick = () => navigation.navigate('Deck', { id: deck.id });
 
   return (
     <TouchableOpacity onPress={handleOnClick}>
       <Card>
         <Heading spacing="small">{deck.title}</Heading>
-        <Text>{`${deck.cards} ${deck.cards > 1 ? 'cards' : 'card'}`}</Text>
+        <Text>{`${cardCount} ${cardCount > 1 ? 'cards' : 'card'}`}</Text>
       </Card>
     </TouchableOpacity>
   );

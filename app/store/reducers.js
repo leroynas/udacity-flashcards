@@ -1,6 +1,12 @@
 import produce from 'immer';
 
-import { LOAD_DECKS_SUCCESS, ADD_DECK, ADD_DECK_FAILED } from './constants';
+import {
+  LOAD_DECKS_SUCCESS,
+  ADD_DECK,
+  ADD_DECK_FAILED,
+  ADD_CARD,
+  ADD_CARD_FAILED,
+} from './constants';
 
 const initialState = {
   decks: null,
@@ -20,6 +26,14 @@ const decksReducer = (state = initialState, action) =>
 
       case ADD_DECK_FAILED:
         delete draft.decks[action.id];
+        break;
+
+      case ADD_CARD:
+        draft.decks[action.deckId].cards[action.card.id] = action.card;
+        break;
+
+      case ADD_CARD_FAILED:
+        delete draft.decks[action.deckId].cards[action.id];
         break;
     }
   });

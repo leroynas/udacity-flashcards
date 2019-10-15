@@ -8,7 +8,10 @@ const makeSelectDecks = createSelector(
   decks =>
     decks &&
     Object.values(decks)
-      .map(deck => ({ ...deck, cards: deck.questions.length }))
+      .map(deck => ({
+        ...deck,
+        cards: Object.values(deck.cards),
+      }))
       .sort((a, b) => b.createdAt - a.createdAt),
 );
 
@@ -16,7 +19,11 @@ const makeSelectDeck = createSelector(
   selectDecks,
   selectDeckID,
   (decks, id) =>
-    decks && id && { ...decks[id], cards: decks[id].questions.length },
+    decks &&
+    id && {
+      ...decks[id],
+      cards: Object.values(decks[id].cards),
+    },
 );
 
 export { makeSelectDecks, makeSelectDeck };

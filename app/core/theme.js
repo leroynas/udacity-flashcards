@@ -7,7 +7,7 @@ export default {
     size: {
       large: 32,
       medium: 24,
-      small: 16,
+      small: 18,
     },
   },
   palette: {
