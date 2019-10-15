@@ -10,8 +10,8 @@ function Deck({ deck }) {
   return (
     <TouchableHighlight>
       <Card>
-        <Heading>{deck.title}</Heading>
-        <Text>cards: {deck.cards}</Text>
+        <Heading spacing="small">{deck.title}</Heading>
+        <Text>{`${deck.cards} ${deck.cards > 1 ? 'cards' : 'card'}`}</Text>
       </Card>
     </TouchableHighlight>
   );
