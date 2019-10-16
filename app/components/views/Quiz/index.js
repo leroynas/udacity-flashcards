@@ -67,11 +67,11 @@ function Quiz({ deck, navigation }) {
                 clickable={false}
               >
                 <Side
-                  title={deck.cards[0].question}
+                  title={deck.cards[current - 1].question}
                   ButtonComponent={ButtonComponent}
                 />
                 <Side
-                  title={deck.cards[0].answer}
+                  title={deck.cards[current - 1].answer}
                   ButtonComponent={ButtonComponent}
                 />
               </FlipCard>

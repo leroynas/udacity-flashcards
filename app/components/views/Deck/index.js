@@ -4,8 +4,10 @@ import PropTypes from 'prop-types';
 import { replace } from '../../../core/navigator';
 
 import Container from '../../ui/Container';
-import Text from '../../ui/Text';
+import Header from '../../ui/Header';
+import IconButton from '../../ui/IconButton';
 import Flex from '../../ui/Flex';
+import Text from '../../ui/Text';
 import Cards from '../../ui/Cards';
 import Card from '../../ui/Card';
 import Heading from '../../ui/Heading';
@@ -16,6 +18,12 @@ function Deck({ deck, navigation }) {
 
   return (
     <Container>
+      <Header>
+        <IconButton
+          icon="arrowleft"
+          onPress={() => navigation.navigate('Decks')}
+        />
+      </Header>
       {deck === null ? (
         <Flex fill alignItems="center" justifyContent="center">
           <Text color="dark">{`Deck doesn't exist`}</Text>

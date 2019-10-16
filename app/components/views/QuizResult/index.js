@@ -23,7 +23,7 @@ function QuizResult({ deck, navigation }) {
   const sufficient = score > 80;
   const colorCode = sufficient ? 'success' : 'danger';
 
-  clearLocalNotification.then(setLocalNotification);
+  clearLocalNotification().then(setLocalNotification);
 
   return (
     <Container>

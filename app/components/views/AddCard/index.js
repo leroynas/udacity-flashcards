@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 import generateId from 'uuid/v4';
 
 import Container from '../../ui/Container';
+import Header from '../../ui/Header';
+import IconButton from '../../ui/IconButton';
 import Flex from '../../ui/Flex';
 import TextButton from '../../ui/TextButton';
 import Button from '../../ui/Button';
@@ -41,6 +43,13 @@ function AddCard({ addCard, navigation }) {
 
   return (
     <Container as={KeyboardAvoidingView} behavior="padding">
+      <Header>
+        <IconButton
+          icon="arrowleft"
+          onPress={() => navigation.navigate('Deck', { id: deckId })}
+        />
+      </Header>
+
       <Flex fill justifyContent="space-between">
         <Flex fill>
           <FlipCard

@@ -1,16 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Ionicons } from '@expo/vector-icons';
+import { TouchableOpacity } from 'react-native';
+import { AntDesign } from '@expo/vector-icons';
 
 import theme from '../../../core/theme';
 
-import Touchable from './Touchable';
-
 function IconButton({ onPress, icon, color, size }) {
   return (
-    <Touchable onPress={onPress}>
-      <Ionicons name={icon} size={size} color={theme.palette[color].text} />
-    </Touchable>
+    <TouchableOpacity onPress={onPress}>
+      <AntDesign name={icon} size={size} color={theme.palette[color].text} />
+    </TouchableOpacity>
   );
 }
 
@@ -22,8 +21,8 @@ IconButton.propTypes = {
 };
 
 IconButton.defaultProps = {
-  color: 'light',
-  size: 32,
+  color: 'dark',
+  size: 24,
 };
 
 export default IconButton;
