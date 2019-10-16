@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 
 import reset from '../core/reset';
 import { loadFonts } from '../core/fonts';
+import { setLocalNotification } from '../core/notification';
 
 import { loadDecks } from '../store/actions';
 import { makeSelectDecks } from '../store/selectors';
@@ -18,6 +19,7 @@ function AppContainer(props) {
 
   useEffect(() => {
     if (decks === null) getDecks();
+    setLocalNotification();
   }, []);
 
   useEffect(() => {

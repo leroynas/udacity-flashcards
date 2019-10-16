@@ -1,6 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import {
+  clearLocalNotification,
+  setLocalNotification,
+} from '../../../core/notification';
 import { replace } from '../../../core/navigator';
 
 import Container from '../../ui/Container';
@@ -18,6 +22,8 @@ function QuizResult({ deck, navigation }) {
 
   const sufficient = score > 80;
   const colorCode = sufficient ? 'success' : 'danger';
+
+  clearLocalNotification.then(setLocalNotification);
 
   return (
     <Container>
