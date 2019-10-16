@@ -16,10 +16,10 @@ export function goBack() {
   if (navigator) config.navigator.dispatch(action);
 }
 
-export function replace(routeName, params, oldRoute) {
+export function replace(routeName, params) {
   const action = StackActions.reset({
     index: 0,
-    actions: [NavigationActions.navigate({ routeName: oldRoute, params })],
+    actions: [NavigationActions.navigate({ routeName, params })],
   });
 
   if (navigator) config.navigator.dispatch(action);

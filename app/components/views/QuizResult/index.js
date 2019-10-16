@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import FlipCard from 'react-native-flip-card';
+
+import { replace } from '../../../core/navigator';
 
 import Container from '../../ui/Container';
 import Text from '../../ui/Text';
@@ -13,7 +14,10 @@ function QuizResult({ deck, navigation }) {
   const correct = navigation.getParam('correct', 0);
   const cardCount = deck.cards.length;
 
-  const percentage = Math.round((correct / cardCount) * 100);
+  const score = Math.round((correct / cardCount) * 100);
+
+  const sufficient = score > 80;
+  const colorCode = sufficient ? 'success' : 'danger';
 
   return (
     <Container>
@@ -23,20 +27,30 @@ function QuizResult({ deck, navigation }) {
         </Flex>
       ) : (
         <Flex fill justifyContent="space-between">
-          <Card>
-            <Heading>Score</Heading>
-            <Heading>{`${percentage}%`}</Heading>
+          <Card color={colorCode}>
+            <Heading spacing="small" color={colorCode}>
+              Score
+            </Heading>
+            <Heading color={colorCode}>{`${score}%`}</Heading>
           </Card>
+
+          <Flex alignItems="center">
+            <Heading spacing="small" color="dark" textAlign="center">
+              {sufficient
+                ? 'You did it!\nGreat job!'
+                : 'You failed...\nTry again!'}
+            </Heading>
+          </Flex>
 
           <Flex>
             <Button
-              title="Try again"
+              title={`${sufficient ? 'Play' : 'Try'} Again`}
               spacing="small"
               color="success"
-              onPress={() => navigation.navigate('Quiz', { id: deck.id })}
+              onPress={() => replace('Quiz', { id: deck.id })}
             />
             <Button
-              title="Stop"
+              title="Back to Deck"
               color="danger"
               onPress={() => navigation.navigate('Deck', { id: deck.id })}
             />

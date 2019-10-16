@@ -53,9 +53,10 @@ function Quiz({ deck, navigation }) {
         <Flex fill justifyContent="space-between">
           <Flex alignItems="center" marginTop={-10}>
             <Text color="dark" spacing="xsmall">
-              {current}/{cardCount}
+              {`${cardCount - current + 1} remaining`}
             </Text>
           </Flex>
+
           <Cards cards={cardCount - current}>
             <ZIndex>
               <FlipCard

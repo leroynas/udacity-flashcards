@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { replace } from '../../../core/navigator';
+
 import Container from '../../ui/Container';
 import Text from '../../ui/Text';
 import Flex from '../../ui/Flex';
@@ -36,7 +38,7 @@ function Deck({ deck, navigation }) {
             <Button
               title="Start quiz"
               color="success"
-              onPress={() => navigation.navigate('Quiz', { id: deck.id })}
+              onPress={() => replace('Quiz', { id: deck.id })}
             />
           </Flex>
         </Flex>

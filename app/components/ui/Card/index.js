@@ -5,7 +5,7 @@ const Card = styled.View`
   background-color: ${props =>
     props.shade
       ? props.theme.palette.grey[props.shade]
-      : props.theme.palette.light.background};
+      : props.theme.palette[props.color].background};
   padding: ${props => props.theme.spacing.large}px
     ${props => props.theme.spacing.medium}px;
   border-radius: ${props => props.theme.shape.borderRadius}px;
@@ -27,6 +27,7 @@ Card.propTypes = {
   fixedAspect: PropTypes.bool,
   width: PropTypes.number,
   shade: PropTypes.string,
+  color: PropTypes.string,
 };
 
 Card.defaultProps = {
@@ -36,6 +37,7 @@ Card.defaultProps = {
   fixedAspect: false,
   width: 100,
   shade: null,
+  color: 'light',
 };
 
 export default Card;
