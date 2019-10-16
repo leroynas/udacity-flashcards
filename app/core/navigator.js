@@ -1,4 +1,4 @@
-import { NavigationActions } from 'react-navigation';
+import { StackActions, NavigationActions } from 'react-navigation';
 
 const config = {};
 
@@ -13,5 +13,14 @@ export function navigate(routeName, params) {
 
 export function goBack() {
   const action = NavigationActions.back({});
+  if (navigator) config.navigator.dispatch(action);
+}
+
+export function replace(routeName, params, oldRoute) {
+  const action = StackActions.reset({
+    index: 0,
+    actions: [NavigationActions.navigate({ routeName: oldRoute, params })],
+  });
+
   if (navigator) config.navigator.dispatch(action);
 }

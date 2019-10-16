@@ -5,6 +5,8 @@ import DecksScreen from '../../../containers/DecksContainer';
 import AddDeckScreen from '../../../containers/AddDeckContainer';
 import DeckScreen from '../../../containers/DeckContainer';
 import AddCardScreen from '../../../containers/AddCardContainer';
+import QuizScreen from '../../../containers/QuizContainer';
+import QuizResultScreen from '../../../containers/QuizResultContainer';
 
 const navigationOptions = {
   header: null,
@@ -25,6 +27,14 @@ const Navigator = createStackNavigator({
   },
   AddCard: {
     screen: AddCardScreen,
+    navigationOptions,
+  },
+  Quiz: {
+    screen: QuizScreen,
+    navigationOptions,
+  },
+  QuizResult: {
+    screen: QuizResultScreen,
     navigationOptions,
   },
 });

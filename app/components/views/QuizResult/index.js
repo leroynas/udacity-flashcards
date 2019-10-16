@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import FlipCard from 'react-native-flip-card';
 
 import Container from '../../ui/Container';
 import Text from '../../ui/Text';
 import Flex from '../../ui/Flex';
-import Cards from '../../ui/Cards';
 import Card from '../../ui/Card';
 import Heading from '../../ui/Heading';
 import Button from '../../ui/Button';
 
-function Deck({ deck, navigation }) {
+function QuizResult({ deck, navigation }) {
+  const correct = navigation.getParam('correct', 0);
   const cardCount = deck.cards.length;
+
+  const percentage = Math.round((correct / cardCount) * 100);
 
   return (
     <Container>
@@ -20,23 +23,22 @@ function Deck({ deck, navigation }) {
         </Flex>
       ) : (
         <Flex fill justifyContent="space-between">
-          <Cards cards={cardCount}>
-            <Card fixedAspect justifyContent="center">
-              <Heading>{deck.title}</Heading>
-              <Text>{`${cardCount} ${cardCount > 1 ? 'cards' : 'card'}`}</Text>
-            </Card>
-          </Cards>
+          <Card>
+            <Heading>Score</Heading>
+            <Heading>{`${percentage}%`}</Heading>
+          </Card>
 
           <Flex>
             <Button
-              title="Add card"
+              title="Try again"
               spacing="small"
-              onPress={() => navigation.navigate('AddCard', { id: deck.id })}
-            />
-            <Button
-              title="Start quiz"
               color="success"
               onPress={() => navigation.navigate('Quiz', { id: deck.id })}
+            />
+            <Button
+              title="Stop"
+              color="danger"
+              onPress={() => navigation.navigate('Deck', { id: deck.id })}
             />
           </Flex>
         </Flex>
@@ -45,9 +47,9 @@ function Deck({ deck, navigation }) {
   );
 }
 
-Deck.propTypes = {
+QuizResult.propTypes = {
   deck: PropTypes.object,
   navigation: PropTypes.object.isRequired,
 };
 
-export default Deck;
+export default QuizResult;

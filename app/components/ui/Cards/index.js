@@ -8,20 +8,22 @@ import AbsoluteWrapper from './AbsoluteWrapper';
 
 function Cards({ cards, children }) {
   return (
-    <Flex>
-      {cards > 0 && (
-        <AbsoluteWrapper>
-          {cards > 1 && (
-            <AbsoluteWrapper>
-              <Card width={80} fixedAspect shade="shade2" />
-            </AbsoluteWrapper>
-          )}
+    <Flex fill>
+      <AbsoluteWrapper justifyContent="flex-start" noBottom>
+        {cards > 0 && (
+          <AbsoluteWrapper>
+            {cards > 1 && (
+              <AbsoluteWrapper>
+                <Card width={80} fixedAspect shade="shade2" />
+              </AbsoluteWrapper>
+            )}
 
-          <Card width={90} fixedAspect shade="shade1" />
-        </AbsoluteWrapper>
-      )}
+            <Card width={90} fixedAspect shade="shade1" />
+          </AbsoluteWrapper>
+        )}
 
-      {children}
+        {children}
+      </AbsoluteWrapper>
     </Flex>
   );
 }
